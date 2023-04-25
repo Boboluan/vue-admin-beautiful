@@ -88,7 +88,7 @@
   import Edit from './components/MemberEdit.vue'
 
   export default {
-    name: 'Bobodun',
+    name: 'Bobomo',
     components: { Edit },
     data() {
       return {

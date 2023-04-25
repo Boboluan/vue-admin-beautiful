@@ -69,19 +69,25 @@ export const asyncRoutes = [
   //     },
   //   ],
   // },
-
   //测试路径
   {
     path: '/member',
     component: Layout,
     redirect: 'noRedirect',
+    name: 'member',
     meta: { title: '用户管理', icon: 'users-cog' },
     children: [
       {
-        path: '/memberList',
-        name: 'memberList',
+        path: 'memberList',
+        name: 'Bobodun',
         component: () => import('@/views/member/memberList/index'),
         meta: { title: '用户列表' },
+      },
+      {
+        path: 'memberts',
+        name: 'Bobomo',
+        component: () => import('@/views/member/memberList/index'),
+        meta: { title: '用户列表2' },
       },
     ],
   },
