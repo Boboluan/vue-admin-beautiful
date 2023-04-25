@@ -53,23 +53,45 @@ export const asyncRoutes = [
       },
     ],
   },
-  /* {
-    path: "/test",
+  // {
+  //   path: '/test',
+  //   component: Layout,
+  //   redirect: 'noRedirect',
+  //   children: [
+  //     {
+  //       path: 'test',
+  //       name: 'Test',
+  //       component: () => import('@/views/test/index'),
+  //       meta: {
+  //         title: '测试页面',
+  //         icon: 'marker',
+  //       },
+  //     },
+  //   ],
+  // },
+
+  //测试路径
+  {
+    path: '/users',
     component: Layout,
-    redirect: "noRedirect",
+    redirect: 'noRedirect',
+    meta: { title: '用户管理', icon: 'users-cog', permissions: ['admin'] },
     children: [
       {
-        path: "test",
-        name: "Test",
-        component: () => import("@/views/test/index"),
-        meta: {
-          title: "test",
-          icon: "marker",
-          permissions: ["admin"],
-        },
+        path: 'usersList',
+        name: 'usersList',
+        meta: { title: '用户管理' },
+        children: [
+          {
+            path: 'usersList',
+            name: 'usersList',
+            component: () => import('@/views/users/userList/index'),
+            meta: { title: '用户列表' },
+          },
+        ],
       },
     ],
-  }, */
+  },
 
   {
     path: '/vab',

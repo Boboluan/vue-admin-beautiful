@@ -27,16 +27,17 @@ const FileManagerPlugin = require('filemanager-webpack-plugin')
 const dayjs = require('dayjs')
 const date = dayjs().format('YYYY_M_D')
 const time = dayjs().format('YYYY-M-D HH:mm:ss')
-process.env.VUE_APP_TITLE = title || 'vue-admin-beautiful'
-process.env.VUE_APP_AUTHOR = author || 'chuzhixin 1204505056@qq.com'
+process.env.VUE_APP_TITLE = title || 'BangBang'
 process.env.VUE_APP_UPDATE_TIME = time
 process.env.VUE_APP_VERSION = version
+process.env.VUE_APP_AUTHOR = author || 'bangbang'
 
 const resolve = (dir) => path.join(__dirname, dir)
-const mockServer = () => {
-  if (process.env.NODE_ENV === 'development') return require('./mock')
-  else return ''
-}
+
+// const mockServer = () => {
+//   if (process.env.NODE_ENV === 'development') return require('./mock')
+//   else return ''
+// }
 
 module.exports = {
   publicPath,
@@ -54,7 +55,7 @@ module.exports = {
       warnings: true,
       errors: true,
     },
-    after: mockServer(),
+    // after: mockServer(),
   },
   configureWebpack() {
     return {
