@@ -84,8 +84,8 @@
 </template>
 
 <script>
-  import { getList, doDelete } from '@/api/userManagement'
-  import Edit from './components/UserManagementEdit'
+  import { getList, doDelete } from '@/api/member'
+  import Edit from './components/MemberEdit.vue'
 
   export default {
     name: 'UserManagement',
@@ -106,6 +106,7 @@
       }
     },
     created() {
+      console.log(1111111111111111111111)
       this.fetchData()
     },
     methods: {
@@ -152,9 +153,9 @@
         this.queryForm.pageNo = 1
         this.fetchData()
       },
-      async fetchData() {
+      fetchData() {
         this.listLoading = true
-        const { data, totalCount } = await getList(this.queryForm)
+        const { data, totalCount } = getList(this.queryForm)
         this.list = data
         this.total = totalCount
         setTimeout(() => {
