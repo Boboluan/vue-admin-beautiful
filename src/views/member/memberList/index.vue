@@ -36,32 +36,48 @@
       <el-table-column show-overflow-tooltip type="selection"></el-table-column>
       <el-table-column
         show-overflow-tooltip
-        prop="id"
+        prop="member_id"
         label="id"
       ></el-table-column>
       <el-table-column
         show-overflow-tooltip
-        prop="username"
-        label="用户名"
+        prop="nick_name"
+        label="昵称"
       ></el-table-column>
       <el-table-column
         show-overflow-tooltip
-        prop="email"
-        label="邮箱"
+        prop="mobile"
+        label="手机号"
       ></el-table-column>
-
-      <el-table-column show-overflow-tooltip label="权限">
-        <template #default="{ row }">
-          <el-tag v-for="(item, index) in row.permissions" :key="index">
-            {{ item }}
-          </el-tag>
-        </template>
-      </el-table-column>
-
       <el-table-column
         show-overflow-tooltip
-        prop="datatime"
-        label="修改时间"
+        prop="gender"
+        label="性别"
+      ></el-table-column>
+      <el-table-column
+        show-overflow-tooltip
+        prop="platform"
+        label="来源"
+      ></el-table-column>
+      <el-table-column
+        show-overflow-tooltip
+        prop="IP"
+        label="IP属地"
+      ></el-table-column>
+      <el-table-column
+        show-overflow-tooltip
+        prop="status"
+        label="状态"
+      ></el-table-column>
+      <el-table-column
+        show-overflow-tooltip
+        prop="create_time"
+        label="创建时间"
+      ></el-table-column>
+      <el-table-column
+        show-overflow-tooltip
+        prop="last_login_time"
+        label="最后登录时间"
       ></el-table-column>
       <el-table-column show-overflow-tooltip label="操作" width="200">
         <template #default="{ row }">
@@ -106,7 +122,6 @@
       }
     },
     created() {
-      console.log(1111111111111111111111)
       this.fetchData()
     },
     methods: {
@@ -153,11 +168,16 @@
         this.queryForm.pageNo = 1
         this.fetchData()
       },
+      /**
+       *
+       *修改返回结果的地方
+       */
       fetchData() {
         this.listLoading = true
-        const { data, totalCount } = getList(this.queryForm)
-        this.list = data
-        this.total = totalCount
+        getList(this.queryForm).then((res) => {
+          this.list = res.data.data
+          this.total = res.data.total
+        })
         setTimeout(() => {
           this.listLoading = false
         }, 300)
